@@ -15,6 +15,8 @@ The project utilizes a dataset containing 8124 samples and 23 categorical featur
 - No missing values were present, ensuring data quality.
 - The target variable distribution was approximately 51.8% edible and 48.2% poisonous.
 
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20172655.png" />
+
 ### 2. Exploratory Data Analysis (EDA) and Feature Engineering
 - Cross-tabulations were used to analyze the distribution of each feature against the 'class' variable, identifying highly predictive features.
 - **Promising Features Identified**: `odor`, `gill-color`, `spore-print-color`, `bruises`, `stalk-surface-above-ring`, `stalk-surface-below-ring`, and `ring-type` showed strong discriminatory power.
@@ -41,9 +43,12 @@ The project utilizes a dataset containing 8124 samples and 23 categorical featur
 
 ### 5. Graphs Made Here
 - **Grouped Bar Charts**: Visualizations for key distinguishing features such as `odor`, `spore-print-color`, `gill-color`, `bruises`, `stalk-surface-above-ring`, `stalk-surface-below-ring`, and `ring-type` were created to show their distribution across edible and poisonous classes.
-- **Pie Chart**: A pie chart illustrated the overall distribution of edible vs. poisonous mushrooms in the dataset.
 - **Confusion Matrices**: Confusion matrices were generated for both Logistic Regression and Decision Tree models on the validation and test sets to visualize classification performance.
-- **ROC Curve**: An ROC curve was generated for the Logistic Regression model, achieving an AUC score of 1.0, indicating perfect separability between the classes.
+
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20173354.png" />
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20173411.png" />
+
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20172608.png" />
 
 ### 6. Performance Comparison of the Model Training
 Both Logistic Regression and Decision Tree models achieved exceptional performance on this dataset. Their key performance metrics are summarized below:
