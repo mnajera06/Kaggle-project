@@ -1,71 +1,51 @@
 
-# Mushroom Classification: Edible vs. Poisonous
+#**Mushroom Classification**: Edible vs. Poisonous
 
-## Project Objective
-The primary objective of this project is to build a machine learning model capable of accurately classifying mushrooms as either edible or poisonous based on their various physical characteristics. The goal is to achieve high predictive accuracy to assist in identifying safe mushrooms.
+###**Overview**
 
-## Dataset
-The project utilizes a dataset containing 8124 samples and 23 categorical features describing various mushroom attributes (e.g., cap shape, odor, gill color, habitat). The target variable, 'class', indicates whether a mushroom is 'e' (edible) or 'p' (poisonous). The dataset was found to be clean, with no missing values, and the classes were well-balanced.
+ Challenge:The primary objective of this challenge is to build a machine learning model capable of accurately classifying mushrooms as either edible or poisonous based on their various physical characteristics. The goal is to achieve high predictive accuracy to assist in identifying safe mushrooms.
 
-## Key Steps and Analysis
+Approach: The challenge is formulated as a  binary classification task.I started by data loading, inspecting it, cleaning and handeling irrelevent values.The features were then one-hot encoded for the decision tree to handle, and train on.
 
-### 1. Data Loading and Initial Exploration
-- The `mushrooms.csv` dataset was loaded and inspected.
-- Confirmed 8124 rows and 23 columns, with all features being categorical.
-- No missing values were present, ensuring data quality.
-- The target variable distribution was approximately 51.8% edible and 48.2% poisonous.
+Summary of the performance: The decision tree was a success and achieved 100% accurecy on the test sets. The confusion matrix and ROC curve even confirm this by showing no false positives or negatives.
 
-### 2. Exploratory Data Analysis (EDA) and Feature Engineering
-- Cross-tabulations were used to analyze the distribution of each feature against the 'class' variable, identifying highly predictive features.
-- **Promising Features Identified**: `odor`, `gill-color`, `spore-print-color`, `bruises`, `stalk-surface-above-ring`, `stalk-surface-below-ring`, and `ring-type` showed strong discriminatory power.
-- Visualizations (grouped bar charts) were generated for these promising features to confirm their patterns and distributions across edible and poisonous classes.
-- A pie chart was created to visualize the overall distribution of edible vs. poisonous mushrooms.
+## Data
+* Type: CSV file with categorical features
+* Size: 8124 rows, 23 columns
+* Instances: The data was slipt into training 60%, validation 20%, and testing 20%
 
-<img width="630" height="470" alt="Image" src="https://github.com/user-attachments/assets/39a674ff-b9d1-4139-9fcd-05ae63a4d835" />
+### Preprocessing / Clean up
+* Feature Removal: The veil-type was dropped because it only had one vlaue in it, making it essentially useless.
+* One-Hot Encoding: used ti convert categorical features into numerical format, making them suitable for machine learning algorithms. No rescaling was needed as all features became binary (0 or 1) after encoding.
 
-<img width="630" height="470" alt="Image" src="https://github.com/user-attachments/assets/dd4aa589-beaa-4a13-83c1-254180bcd85f" />
 
-<img width="630" height="470" alt="Image" src="https://github.com/user-attachments/assets/a48e25eb-74f5-47c6-8120-580153ceea07" />
+## Data Visualization
+The target variable distribution was approximately 51.8% edible and 48.2% poisonous, making the dataset well balanced.
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20172655.png" />
 
-<img width="630" height="470" alt="Image" src="https://github.com/user-attachments/assets/df42cf0c-4067-401a-9829-9f23cf747f80" />
 
-<img width="630" height="470" alt="Image" src="https://github.com/user-attachments/assets/eea9f4dd-7c9f-42b4-bb0e-c9a7068005ef" />
 
-### 3. Data Preprocessing
-- The `veil-type` column was dropped as it contained only one unique value, providing no predictive information.
-- The target variable 'class' was numerically encoded: 'e' (edible) to `0` and 'p' (poisonous) to `1`.
-- One-hot encoding was applied to all remaining categorical features, transforming them into a numerical format suitable for machine learning algorithms. This resulted in 95 features.
-- The dataset was split into training (60%), validation (20%), and test (20%) sets using stratified sampling to maintain class balance.
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20173354.png" />
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20173411.png" />
 
-### 4. Model Training and Evaluation
-
-#### A. Logistic Regression Model
-- A Logistic Regression model was initialized and trained on the preprocessed training data.
-- **Validation Performance**: Achieved 99.82% accuracy with 0 false positives and only 3 false negatives.
-- **Test Performance**: Achieved a perfect 100% accuracy on the unseen test set, with 0 false positives and 0 false negatives, demonstrating excellent generalization capabilities.
-
-#### B. Decision Tree Classifier
-- A Decision Tree Classifier was also trained and visualized to provide an interpretable model.
-- **Test Performance**: Achieved a perfect 100% accuracy on the test set, with 0 false positives and 0 false negatives.
-- The decision tree visualization clearly illustrated the decision rules used by the model.
-
-### 5. Graphs Made Here
+### Findings
 - **Grouped Bar Charts**: Visualizations for key distinguishing features such as `odor`, `spore-print-color`, `gill-color`, `bruises`, `stalk-surface-above-ring`, `stalk-surface-below-ring`, and `ring-type` were created to show their distribution across edible and poisonous classes.
-- **Pie Chart**: A pie chart illustrated the overall distribution of edible vs. poisonous mushrooms in the dataset.
-- **Confusion Matrices**: Confusion matrices were generated for both Logistic Regression and Decision Tree models on the validation and test sets to visualize classification performance.
-- **ROC Curve**: An ROC curve was generated for the Logistic Regression model, achieving an AUC score of 1.0, indicating perfect separability between the classes.
 
-### 6. Performance Comparison of the Model Training
-Both Logistic Regression and Decision Tree models achieved exceptional performance on this dataset. Their key performance metrics are summarized below:
+
+### 6. Performance Comparison
 
 | Model                  | Validation Accuracy | Test Accuracy | Test Precision | Test Recall | Test F1-Score |
 |------------------------|---------------------|---------------|----------------|-------------|---------------|
-| Logistic Regression    | 99.82%              | 100%          | 1.00           | 1.00        | 1.00          |
-| Decision Tree          | -                   | 100%          | 1.00           | 1.00        | 1.00          |
+| Decision Tree          | 1.00                | 100%          | 1.00           | 1.00        | 1.00          |
 
-*Note: The Decision Tree model was only explicitly evaluated on the test set for this summary, but would also show perfect or near-perfect performance on validation given its test performance.*
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20172552.png" />
+<img width="630" height="470" alt="Image" src="https://github.com/mnajera06/Kaggle-project/blob/main/Screenshot%202026-05-01%20172608.png" />
 
-Both models demonstrated perfect classification on the test set, suggesting the features are highly discriminative for this task. The Decision Tree offers interpretability, while Logistic Regression provides a simple yet powerful linear classification boundary. Given the perfect scores, either model would be highly effective.
+**Confusion Matrix**: The confusion matrix confirms that the decision tree on the test set had perfect performance, classyfing everything perfectly with no false positives or negatives.
+
+**ROC Curve**: The ROC Curve evaluates the performance of the decision tree. This ROC curve shows that the decision tree was able to correctly classify everything into their repective class, further confirming the confusion matrix.
+
+**Decision Tree**: The decision tree was visualized to showcase its proccess of decision making.
 
 ## Conclusion
-Both the Logistic Regression and Decision Tree models achieved exceptional performance (100% accuracy on the test set) in classifying mushrooms as edible or poisonous. This indicates that the features provided in the dataset are highly effective discriminators. The project successfully built robust models capable of accurate mushroom classification, ready for potential deployment or further analysis.
+The Decision Tree model achieved exceptional performance (100% accuracy on the test set) in classifying mushrooms as edible or poisonous. This indicates that the features provided in the dataset are highly effective discriminators.
